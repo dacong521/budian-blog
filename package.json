@@ -1,0 +1,14 @@
+{
+  "name": "budian-blog",
+  "private": true,
+  "version": "1.0.0",
+  "description": "布点的布吉岛 —— 一个用 VitePress 搭的个人博客",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

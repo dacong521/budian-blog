@@ -1,0 +1,7 @@
+<!-- 站点 LOGO：一座小岛 + 两道波浪。想换图标就替换这个文件，或改 site.config.ts 里的 logo 路径 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <rect width="48" height="48" rx="12" fill="#0f1514" />
+  <circle cx="24" cy="20" r="7.5" fill="#209e80" />
+  <path d="M7 31c4.2-3.2 8.4-3.2 12.6 0s8.4 3.2 12.6 0 8.4-3.2 12.6 0" fill="none" stroke="#209e80" stroke-width="2.6" stroke-linecap="round" />
+  <path d="M7 38c4.2-3.2 8.4-3.2 12.6 0s8.4 3.2 12.6 0 8.4-3.2 12.6 0" fill="none" stroke="#3fbf9e" stroke-width="2" stroke-linecap="round" opacity="0.55" />
+</svg>

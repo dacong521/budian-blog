@@ -1,0 +1,14 @@
+# 依赖目录（体积大，不进仓库）
+node_modules/
+
+# 构建产物和缓存（每次 build 自动生成）
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Vercel CLI 生成的本地配置
+.vercel/
+
+# 系统/编辑器杂项
+.DS_Store
+Thumbs.db
+*.local
