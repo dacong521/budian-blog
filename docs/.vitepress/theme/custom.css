@@ -1,0 +1,266 @@
+/* ============================================================
+   1. 可调变量（改配色、尺寸优先改这里）
+   ============================================================ */
+:root {
+  /* 主色：链接、按钮、导航选中下划线、卡片悬停边框都用它 */
+  --site-brand: #209e80;
+  --site-brand-soft: rgba(32, 158, 128, 0.1);
+  --site-brand-border: rgba(32, 158, 128, 0.35);
+
+  /* 内容区最大宽度：宽屏时正文/卡片网格的宽度上限 */
+  --site-content-w: 1180px;
+
+  /* 顶部导航：背景色、起始高度、滚动后高度 */
+  --nav-bg: rgba(12, 16, 15, 0.92);
+  --nav-h: 68px;
+  --nav-h-shrink: 56px;
+
+  /* LOGO 高度：正常态 / 滚动后 */
+  --site-logo-h: 34px;
+  --site-logo-h-shrink: 28px;
+}
+
+/* 覆盖 VitePress 自己的导航高度变量，导航栏、汉堡按钮、移动菜单会一起跟着变 */
+:root {
+  --vp-nav-height: var(--nav-h) !important;
+}
+
+/* 页面往下滚一点（由 Layout.vue 给 html 加类）就切到收缩态 */
+html.nav-shrink {
+  --vp-nav-height: var(--nav-h-shrink) !important;
+}
+
+/* 把 VitePress 的品牌色换成站点主色 */
+:root {
+  --vp-c-brand-1: #209e80;
+  --vp-c-brand-2: #1d9074;
+  --vp-c-brand-3: #197a62;
+  --vp-c-brand-soft: rgba(32, 158, 128, 0.14);
+  --vp-layout-max-width: calc(var(--site-content-w) + 64px);
+}
+
+/* ============================================================
+   2. 顶部导航栏（深色固定条）
+   ============================================================ */
+.VPNavBar {
+  background-color: var(--nav-bg) !important;
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+.VPNavBar .wrapper,
+.VPNavBar .container {
+  background-color: transparent !important;
+}
+
+/* 站名文字 */
+.VPNavBarTitle .title {
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* LOGO 尺寸（滚动后换小图，由上面的变量控制） */
+.VPNavBarTitle .VPImage {
+  height: var(--site-logo-h) !important;
+  width: auto !important;
+}
+
+html.nav-shrink .VPNavBarTitle .VPImage {
+  height: var(--site-logo-h-shrink) !important;
+}
+
+/* 一级菜单 */
+.VPNavBarMenuLink {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 15px;
+  transition: color 0.2s, box-shadow 0.2s;
+}
+
+.VPNavBarMenuLink:hover {
+  color: #fff !important;
+}
+
+/* 当前页高亮：底部一条主色横线 */
+.VPNavBarMenuLink.active {
+  color: #fff !important;
+  box-shadow: inset 0 -3px 0 0 var(--site-brand);
+}
+
+/* 搜索入口挪到导航最右侧（DOM 里它默认排第一个，这里用 order 调到末尾） */
+.VPNavBar .content-body {
+  justify-content: flex-end;
+}
+
+.VPNavBarSearch {
+  flex-grow: 0 !important;
+  order: 99;
+  margin-left: 10px;
+}
+
+/* 搜索按钮（深色底上的描边样式） */
+.VPNavBarSearch .DocSearch-Button {
+  height: 34px;
+  padding: 0 12px;
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 17px;
+  color: #fff;
+}
+
+.VPNavBarSearch .DocSearch-Button:hover {
+  border-color: var(--site-brand);
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Placeholder,
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys {
+  display: none; /* 只保留放大镜图标，和站点风格一致 */
+}
+
+/* 社交图标 */
+.VPNavBarSocialLinks .VPSocialLink {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.VPNavBarSocialLinks .VPSocialLink:hover {
+  color: #fff !important;
+}
+
+/* 汉堡按钮三条线（移动端） */
+.VPNavBarHamburger .top,
+.VPNavBarHamburger .middle,
+.VPNavBarHamburger .bottom {
+  background-color: #fff !important;
+}
+
+/* 移动端展开的菜单面板也做成深色，和导航条连成一片 */
+.VPNavScreen {
+  background-color: #0c100f !important;
+}
+
+.VPNavScreen .VPNavScreenMenuLink {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.VPNavScreen .VPNavScreenMenuLink.active {
+  color: var(--site-brand) !important;
+}
+
+/* ============================================================
+   3. 正文排版
+   ============================================================ */
+.vp-doc h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.35;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc h2 {
+  margin-top: 38px;
+  padding: 0 0 0 12px;
+  border-top: none;
+  border-left: 3px solid var(--site-brand);
+  font-size: 22px;
+}
+
+.vp-doc h3 {
+  margin-top: 28px;
+  font-size: 18px;
+}
+
+.vp-doc a {
+  text-underline-offset: 3px;
+}
+
+/* 文章页正文宽度：没有左侧边栏，右侧保留目录 */
+.VPDoc.has-aside .content-container {
+  max-width: 780px !important;
+}
+
+.VPDoc:not(.has-aside) .content-container {
+  max-width: 860px !important;
+}
+
+/* 含卡片网格的页面（全部文章页）铺满内容区，才能三列排 */
+.VPDoc:has(.all-posts) .container {
+  max-width: var(--site-content-w) !important;
+}
+
+.VPDoc:has(.all-posts) .content-container,
+.VPDoc:has(.all-posts) .content {
+  max-width: 100% !important;
+}
+
+/* ============================================================
+   4. 首页与页脚
+   ============================================================ */
+.VPHero .name {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.VPHomeContent .vp-doc {
+  padding-top: 8px;
+}
+
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-alt);
+}
+
+/* ============================================================
+   5. 移动端适配（<768px 是 VitePress 的移动断点）
+   ============================================================ */
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 56px;
+    --nav-h-shrink: 52px;
+    --site-logo-h: 28px;
+    --site-logo-h-shrink: 24px;
+    --site-content-w: 100%;
+  }
+
+  .VPNavBarTitle .title {
+    font-size: 16px;
+  }
+
+  .VPNavBarSearch {
+    order: 0; /* 手机上放回汉堡按钮左边，避免被挤出屏幕 */
+    margin-left: 0;
+    margin-right: 2px;
+  }
+
+  .VPNavBarSearch .DocSearch-Button {
+    width: 38px;
+    height: 30px;
+    padding: 0;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  /* 手机上的代码块：字号小一点，减少横向滚动 */
+  .vp-doc div[class*='language-'] {
+    font-size: 12px;
+    padding: 12px 12px 10px;
+  }
+
+  .vp-doc h1 {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  .vp-doc h2 {
+    font-size: 19px;
+  }
+
+  .VPDoc .container {
+    padding: 0 16px;
+  }
+
+  .VPDoc.has-aside .content-container,
+  .VPDoc:not(.has-aside) .content-container {
+    max-width: 100% !important;
+  }
+}
