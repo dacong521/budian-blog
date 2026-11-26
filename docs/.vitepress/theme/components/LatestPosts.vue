@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
-import { posts } from '../../data/posts'
+// 这里的 posts 是构建时自动扫描出来的（见 data/posts.data.ts），不需要手动维护
+import { data as posts } from '../../data/posts.data'
 
 /**
  * 文章卡片列表（全局组件，md 里直接写标签即可）
@@ -64,7 +65,7 @@ function hrefOf(link: string, external?: boolean) {
       </a>
     </div>
 
-    <p v-if="!items.length" class="post-empty">这个栏目还没有文章，去 posts.ts 里加一条就有了。</p>
+    <p v-if="!items.length" class="post-empty">这个栏目还没有文章：在对应目录新建一个 md，写好 date 和 category 就会自动出现在这里。</p>
   </section>
 </template>
 
