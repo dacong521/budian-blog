@@ -2,6 +2,7 @@
   "name": "budian-blog",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "description": "布点的布吉岛 —— 一个用 VitePress 搭的个人博客",
   "scripts": {
     "dev": "vitepress dev docs",
