@@ -30,7 +30,7 @@ docs/
 └─ .vitepress/
    ├─ config.mts        站点配置
    ├─ site.config.ts    站名 / 导航 / 页脚
-   ├─ data/posts.ts     文章索引数据
+   ├─ data/posts.data.ts  自动扫描文章的索引
    └─ theme/            导航样式和自定义组件
 ```
 
@@ -53,8 +53,9 @@ npm run preview  # 预览构建结果
 
 ## 写一篇新文章的流程
 
-1. 在 `docs/posts/` 下新建 `xxx.md`，写好开头那几行元信息；
-2. 到 `docs/.vitepress/data/posts.ts` 里加一条索引；
-3. 保存，列表页和首页都会自动多出这一篇。
+1. 在 `docs/posts/` 下新建 `xxx.md`，写好开头那几行元信息（`date` 一定要有）；
+2. 保存，列表页、首页和对应栏目页会自动多出这一篇。
+
+索引是构建时自动扫描出来的，不用手动登记。
 
 就这么多。
